@@ -49,15 +49,19 @@ func djb33(seed uint32, k string) uint32 {
 	}
 	switch l - i {
 	case 1:
+		d = (d * 33) ^ uint32(k[i])
 	case 2:
 		d = (d * 33) ^ uint32(k[i])
+		d = (d * 33) ^ uint32(k[i+1])
 	case 3:
 		d = (d * 33) ^ uint32(k[i])
 		d = (d * 33) ^ uint32(k[i+1])
+		d = (d * 33) ^ uint32(k[i+2])
 	case 4:
 		d = (d * 33) ^ uint32(k[i])
 		d = (d * 33) ^ uint32(k[i+1])
 		d = (d * 33) ^ uint32(k[i+2])
+		d = (d * 33) ^ uint32(k[i+3])
 	}
 	return d ^ (d >> 16)
 }
